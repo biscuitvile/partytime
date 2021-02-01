@@ -9,6 +9,8 @@ gem 'rails', '~> 6.1.1'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'faker'
+gem 'render_async'
 gem 'rest-client'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
@@ -20,7 +22,6 @@ end
 
 group :development do
   gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
 end
