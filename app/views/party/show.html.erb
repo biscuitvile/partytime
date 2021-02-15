@@ -1,0 +1,26 @@
+<% if session[:guest] %>
+  <%- rooms.each do |name, room| %>
+    <h3><%= name.gsub(/-/, ' ') %></h3>
+
+    <% unless name == session[:current_room] %>
+      <%= link_to "join", table_path(name), data: { turbolinks: false } %>
+    <% end %>
+
+    <ul>
+      <%- room.filter { |guest| guest["userName"].present? }.each do |guest| %>
+        <li><%= guest["userName"] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with url: tables_path, method: :post do |f| %>
+    <%= f.submit "Start a table" %>
+  <% end %>
+
+  <%= button_to "Leave the party", session_path, method: :delete %>
+<% else %>
+  <%= form_with url: session_path, method: :post do |f| %>
+    <%= f.text_field :name, placeholder: "Name" %>
+    <%= f.submit "Join the party" %>
+  <% end %>
+<% end %>

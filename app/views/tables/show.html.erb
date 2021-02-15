@@ -1,0 +1,32 @@
+<div id="party">Loading party...</div>
+
+<script>
+  const checkParty = () => {
+    fetch("<%= root_path %>")
+      .then(response => response.text())
+      .then(response => {
+        document.getElementById("party").innerHTML = response;
+      });
+  };
+
+  setInterval(checkParty, 9000);
+</script>
+
+<script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
+
+<script>
+  callFrame = window.DailyIframe.createFrame({
+    iframeStyle: {
+      position: 'fixed',
+      border: '1px solid black',
+      width: '80%',
+      height: '100%',
+      right: '0px',
+      bottom: '0px'
+    },
+    showLeaveButton: true,
+    userName: '<%= session[:guest] %>'
+  });
+callFrame.join({ url: 'https://andyborsz.daily.co/<%= params[:id] %>' });
+</script>
+
