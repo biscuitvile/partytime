@@ -1,16 +1,18 @@
 <% if current_guest %>
   <%- tables.each do |table| %>
-    <h3><%= table.name.gsub(/-/, ' ') %></h3>
+    <div class="table">
+      <h3><%= table.name.gsub(/-/, ' ') %></h3>
 
-    <% unless table.name == session[:current_table] %>
-      <%= link_to "join", table_path(table), data: { turbolinks: false } %>
-    <% end %>
-
-    <ul>
-      <%- table.guests.each do |guest| %>
-        <li><%= guest.name %></li>
+      <% unless table.name == session[:current_table] %>
+        <%= link_to "join", table_path(table), data: { turbolinks: false } %>
       <% end %>
-    </ul>
+
+      <ul>
+        <%- table.guests.each do |guest| %>
+          <li><%= guest.name %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <%= form_with url: tables_path, method: :post do |f| %>
