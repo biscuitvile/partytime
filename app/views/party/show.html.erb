@@ -3,7 +3,9 @@
     <div class="table">
       <h3><%= table.name.gsub(/-/, ' ') %></h3>
 
-      <% unless table.name == session[:current_table] %>
+      <% if table.name == session[:current_table] %>
+        <%= link_to "join", table_path(table), data: { turbolinks: false }, class: "current" %>
+      <% else %>
         <%= link_to "join", table_path(table), data: { turbolinks: false } %>
       <% end %>
 

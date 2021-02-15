@@ -31,6 +31,10 @@ div.table {
   margin-bottom: 5px;
 }
 
+#party .current {
+  display: none;
+}
+
 form {
   padding-top: 5px;
 }
