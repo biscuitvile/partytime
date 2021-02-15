@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
 
   def create
-    session[:guest] = params[:name]
+    guest = Guest.create(name: params[:name])
+    session[:guest_id] = guest.id
 
     redirect_to :root
   end
 
   def destroy
-    session[:guest] = nil
+    current_guest.destroy
 
     redirect_to :root
   end

@@ -9,7 +9,7 @@
       });
   };
 
-  setInterval(checkParty, 9000);
+  setInterval(checkParty, 3000);
 </script>
 
 <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
@@ -27,6 +27,6 @@
     showLeaveButton: true,
     userName: '<%= session[:guest] %>'
   });
-callFrame.join({ url: 'https://andyborsz.daily.co/<%= params[:id] %>' });
+callFrame.join({ url: 'https://andyborsz.daily.co/<%= table.name %>' });
 </script>
 

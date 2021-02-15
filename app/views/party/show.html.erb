@@ -1,14 +1,14 @@
-<% if session[:guest] %>
-  <%- rooms.each do |name, room| %>
-    <h3><%= name.gsub(/-/, ' ') %></h3>
+<% if current_guest %>
+  <%- tables.each do |table| %>
+    <h3><%= table.name.gsub(/-/, ' ') %></h3>
 
-    <% unless name == session[:current_room] %>
-      <%= link_to "join", table_path(name), data: { turbolinks: false } %>
+    <% unless table.name == session[:current_table] %>
+      <%= link_to "join", table_path(table), data: { turbolinks: false } %>
     <% end %>
 
     <ul>
-      <%- room.filter { |guest| guest["userName"].present? }.each do |guest| %>
-        <li><%= guest["userName"] %></li>
+      <%- table.guests.each do |guest| %>
+        <li><%= guest.name %></li>
       <% end %>
     </ul>
   <% end %>
