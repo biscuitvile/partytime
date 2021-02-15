@@ -30,6 +30,7 @@ class TablesController < ApplicationController
   def show
     current_guest.update(table: table)
     session[:current_table] = params[:name]
+    Table.cleanup!
   end
 
   private
