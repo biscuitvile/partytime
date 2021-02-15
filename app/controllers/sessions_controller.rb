@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
   def destroy
     current_guest.destroy
     session.clear
+    Table.cleanup!
 
     redirect_to :root
   end
