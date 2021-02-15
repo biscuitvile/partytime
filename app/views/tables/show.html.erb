@@ -24,7 +24,7 @@
       right: '0px',
       bottom: '0px'
     },
-    userName: '<%= session[:guest] %>'
+    userName: '<%= current_guest.name %>'
   });
 callFrame.join({ url: 'https://andyborsz.daily.co/<%= table.name %>' });
 </script>
